@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 const StyledDiv = styled.div`
 	border: 5px solid;
 	width: 18vw;
 	padding: 2vw;
-	height: 30vw;
-	margin: 5vw;
+	height: 35vw;
+	margin: 0vw 5vw 5vw;
 `;
 const StyledContainer = styled.div`
 	height: 5vw;

@@ -46,6 +46,7 @@ const ArticleHomePage = () => {
 							fontSize: "30px",
 							fontWeight: 700,
 							alignItems: "flex-start",
+							marginBottom: "3vw",
 						}}
 					>
 						Most Emailed Article
@@ -72,6 +73,7 @@ const ArticleHomePage = () => {
 							fontSize: "30px",
 							fontWeight: 700,
 							alignItems: "flex-start",
+							marginBottom: "3vw",
 						}}
 					>
 						Most Shared Article
@@ -98,6 +100,7 @@ const ArticleHomePage = () => {
 							fontSize: "30px",
 							fontWeight: 700,
 							alignItems: "flex-start",
+							marginBottom: "3vw",
 						}}
 					>
 						Most Viewed Article
