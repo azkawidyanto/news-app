@@ -2,14 +2,16 @@ import styled from "@emotion/styled";
 import React from "react";
 const StyledDiv = styled.div`
 	border: 5px solid;
-	width: 90vw;
-	height: 15w;
+	width: 20vw;
+	height: 35vw;
 	margin: 5vw;
 `;
 const StyledContainer = styled.div`
 	height: 2w;
 	padding: 2vw;
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 `;
 const StyledImage = styled.img`
 	height: 10vw;
@@ -26,7 +28,9 @@ const ThumbnailNews = ({ image, title, abstract, source, url }) => {
 			<StyledContainer>
 				{image && <StyledImage src={image} alt={source} />}
 				<StyledTypography>
-					<StyledContainer>{title}</StyledContainer>
+					<StyledContainer style={{ fontWeight: 700, fontSize: "20px" }}>
+						{title}
+					</StyledContainer>
 					<StyledContainer>{abstract}</StyledContainer>
 				</StyledTypography>
 			</StyledContainer>
