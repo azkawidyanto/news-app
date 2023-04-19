@@ -5,12 +5,15 @@ import ThumbnailNews from "./Componenets/ThumbnailNews";
 import axios from "axios";
 
 const ArticleHomePage = () => {
+	const [userCoins, setUserCoins] = useState(100000);
+	const [userSpent, setUserSpent] = useState(0);
+	const [articleBought, setArticleBought] = useState([]);
 	const [mostEmailedArticle, setMostEmailedArticle] = useState([]);
 	const [mostSharedArticle, setMostSharedArticle] = useState([]);
 	const [mostViewedArticle, setMostViewedArticle] = useState([]);
 
 	const FetchEmailedData = async () => {
-		const url = `https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=vRaxuZ0cD8TeSiHfif17niUJrP8fN5aS`;
+		const url = `https://api.nytimes.com/svc/mostpopular/v2/emailed/1.json?api-key=vRaxuZ0cD8TeSiHfif17niUJrP8fN5aS`;
 		axios(url).then((response) => {
 			setMostEmailedArticle([...response.data.results]);
 		});
@@ -27,6 +30,7 @@ const ArticleHomePage = () => {
 			setMostSharedArticle([...response.data.results]);
 		});
 	};
+	const handleBuy = (coin) => {};
 	useEffect(() => {
 		FetchEmailedData();
 		FetchSharedData();
@@ -51,11 +55,13 @@ const ArticleHomePage = () => {
 						return (
 							<ThumbnailNews
 								key={index}
+								publishDate={element.published_date}
 								image={media?.[0].url}
 								title={element.title}
 								abstract={element.abstract}
 								source={element.source}
 								url={element.url}
+								handleBuy={handleBuy}
 							/>
 						);
 					})}
@@ -76,10 +82,12 @@ const ArticleHomePage = () => {
 							<ThumbnailNews
 								key={index}
 								image={media?.[0].url}
+								publishDate={element.published_date}
 								title={element.title}
 								abstract={element.abstract}
 								source={element.source}
 								url={element.url}
+								handleBuy={handleBuy}
 							/>
 						);
 					})}
@@ -101,9 +109,11 @@ const ArticleHomePage = () => {
 								key={index}
 								image={media?.[0].url}
 								title={element.title}
+								publishDate={element.published_date}
 								abstract={element.abstract}
 								source={element.source}
 								url={element.url}
+								handleBuy={handleBuy}
 							/>
 						);
 					})}
