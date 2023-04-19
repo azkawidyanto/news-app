@@ -1,13 +1,22 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Componenets/Navbar";
 import ThumbnailNews from "./Componenets/ThumbnailNews";
 
 import axios from "axios";
+import styled from "@emotion/styled";
+import { useNavigate } from "react-router";
 
+const StyledDiv = styled.div`
+	font-size: 30px;
+	font-weight: 700;
+	align-items: flex-start;
+	margin-bottom: 3vw;
+`;
 const ArticleHomePage = () => {
+	const navigate = useNavigate();
+
 	const [userCoins, setUserCoins] = useState(100000);
 	const [userSpent, setUserSpent] = useState(0);
-	const [articleBought, setArticleBought] = useState([]);
 	const [mostEmailedArticle, setMostEmailedArticle] = useState([]);
 	const [mostSharedArticle, setMostSharedArticle] = useState([]);
 	const [mostViewedArticle, setMostViewedArticle] = useState([]);
@@ -30,7 +39,14 @@ const ArticleHomePage = () => {
 			setMostSharedArticle([...response.data.results]);
 		});
 	};
-	const handleBuy = (coin) => {};
+
+	const handleUserBought = () => {
+		setUserCoins(userCoins - userSpent);
+	};
+	const handleBuy = (price, title, image) => {
+		setUserSpent(price);
+		navigate(`/summary?title=${title}&price=${userSpent}`);
+	};
 	useEffect(() => {
 		FetchEmailedData();
 		FetchSharedData();
@@ -41,16 +57,7 @@ const ArticleHomePage = () => {
 			<Navbar />
 			<div style={{ display: "flex", flexDirection: "row" }}>
 				<div>
-					<div
-						style={{
-							fontSize: "30px",
-							fontWeight: 700,
-							alignItems: "flex-start",
-							marginBottom: "3vw",
-						}}
-					>
-						Most Emailed Article
-					</div>
+					<StyledDiv>Most Emailed Article</StyledDiv>
 					{mostEmailedArticle?.map((element, index) => {
 						const media = element?.media?.[0]?.["media-metadata"];
 						return (
@@ -68,16 +75,7 @@ const ArticleHomePage = () => {
 					})}
 				</div>
 				<div>
-					<div
-						style={{
-							fontSize: "30px",
-							fontWeight: 700,
-							alignItems: "flex-start",
-							marginBottom: "3vw",
-						}}
-					>
-						Most Shared Article
-					</div>
+					<StyledDiv>Most Shared Article</StyledDiv>
 					{mostSharedArticle?.map((element, index) => {
 						const media = element?.media?.[0]?.["media-metadata"];
 						return (
@@ -95,16 +93,7 @@ const ArticleHomePage = () => {
 					})}
 				</div>
 				<div>
-					<div
-						style={{
-							fontSize: "30px",
-							fontWeight: 700,
-							alignItems: "flex-start",
-							marginBottom: "3vw",
-						}}
-					>
-						Most Viewed Article
-					</div>
+					<StyledDiv>Most Viewed Article</StyledDiv>
 					{mostViewedArticle?.map((element, index) => {
 						const media = element?.media?.[0]?.["media-metadata"];
 						return (

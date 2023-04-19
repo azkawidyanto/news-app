@@ -8,7 +8,7 @@
 		"@testing-library/jest-dom": "^5.14.1",
 		"@testing-library/react": "^13.0.0",
 		"@testing-library/user-event": "^13.2.1",
-		"axios": "^1.3.5",
+		"axios": "^1.3.6",
 		"dotenv": "^16.0.3",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
@@ -21,7 +21,7 @@
 	"scripts": {
 		"start": "react-dotenv && react-scripts start",
 		"build": "react-dotenv && react-scripts build",
-		"test": " react-scripts test",
+		"test": "jest",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
@@ -46,5 +46,18 @@
 		"whitelist": [
 			"API_KEY"
 		]
+	},
+	"devDependencies": {
+		"@babel/core": "^7.21.4",
+		"@babel/plugin-syntax-jsx": "^7.21.4",
+		"@babel/preset-env": "^7.21.4",
+		"@babel/preset-react": "^7.18.6",
+		"babel-jest": "^29.5.0"
+	},
+	"jest": {
+		"moduleNameMapper": {
+			"axios": "axios/dist/node/axios.cjs"
+		},
+		"testEnvironment": "jsdom"
 	}
 }

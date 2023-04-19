@@ -72,7 +72,9 @@ const ThumbnailNews = ({
 					</StyledContainer>
 				</StyledTypography>
 				<StyledContainer>{`Price ${price}`}</StyledContainer>
-				<Button onClick={() => handleBuy(price)}>Buy Article</Button>
+				<Button onClick={() => handleBuy(price, title, image)}>
+					Buy Article
+				</Button>
 			</StyledContainer>
 		</StyledDiv>
 	);
